@@ -1,6 +1,8 @@
 package com.zolikon.problems;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import com.zolikon.helpers.Log;
 public class BiggerIsGreater implements Problem {
 
     public void start() {

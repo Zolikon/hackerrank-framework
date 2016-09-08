@@ -18,12 +18,14 @@ public class ConsoleReader {
     private PrintStream original;
     private StringBuilder expected;
     private InputStream fileSource;
+    private InputHolder inputHolder;
 
     public static ConsoleReader init() {
         return new ConsoleReader();
     }
 
     private ConsoleReader() {
+        inputHolder = InputHolder.init();
         expected = new StringBuilder();
         original = System.out;
         out = new ByteArrayOutputStream();
@@ -49,7 +51,7 @@ public class ConsoleReader {
         return this;
     }
 
-    public ConsoleReader finish() {
+    public ConsoleReader resetSystemOut() {
         System.setOut(original);
         return this;
     }
@@ -83,6 +85,7 @@ public class ConsoleReader {
                     break;
                 }
                 if (!(onlyFailed && line.equals(expectedLine))) {
+                    System.out.println("input:           |" + inputHolder.getNextInput() + "|");
                     System.out.println("expected result: |" + expectedLine + "|");
                     System.out.println("actual result:   |" + line + "|");
                     System.out.println("result:" + line.equals(expectedLine));
