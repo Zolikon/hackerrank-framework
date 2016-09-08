@@ -1,13 +1,10 @@
 package com.zolikon.helpers;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -25,7 +22,7 @@ public class ConsoleReader {
     }
 
     private ConsoleReader() {
-        inputHolder = InputHolder.init();
+        inputHolder = InputHolder.getInstance();
         expected = new StringBuilder();
         original = System.out;
         out = new ByteArrayOutputStream();

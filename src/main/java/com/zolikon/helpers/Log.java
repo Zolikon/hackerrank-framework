@@ -9,7 +9,7 @@ public class Log {
 
     List<String> list = new ArrayList<>();
 
-    public static Log init() {
+    public static Log getInstance() {
         return LOG_INSTANCE;
     }
 

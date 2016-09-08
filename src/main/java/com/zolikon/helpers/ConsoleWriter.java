@@ -13,7 +13,7 @@ public class ConsoleWriter {
     private boolean isInputCounted = false;
     private InputHolder inputHolder;
     private ConsoleWriter() {
-        inputHolder = InputHolder.init();
+        inputHolder = InputHolder.getInstance();
     }
 
     public static ConsoleWriter init() {
@@ -59,6 +59,7 @@ public class ConsoleWriter {
     public void finish() {
         inputHolder.finishInput();
         String inputAsString = inputHolder.toString();
+        Log.getInstance().add(inputAsString);
         StringBufferInputStream s = new StringBufferInputStream(inputAsString);
         System.setIn(s);
     }

@@ -7,14 +7,14 @@ import java.util.List;
 import com.google.common.base.Joiner;
 public class InputHolder {
 
-    private static final InputHolder instance = new InputHolder();
+    private static final InputHolder INSTANCE = new InputHolder();
 
     List<Object> inputList = new ArrayList<>();
     Iterator<Object> iterator;
     boolean isContainingCounter = false;
 
-    public static InputHolder init() {
-        return instance;
+    public static InputHolder getInstance() {
+        return INSTANCE;
     }
 
     public synchronized void addInput(Object input) {
