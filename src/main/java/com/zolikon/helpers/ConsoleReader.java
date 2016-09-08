@@ -30,7 +30,7 @@ public class ConsoleReader {
         System.setOut(printStream);
     }
 
-    public ConsoleReader addLines(String line, String... lines) {
+    public ConsoleReader addLine(String line, String... lines) {
         expected.append(line + "\n");
         for (String oneLine : lines) {
             expected.append(oneLine + "\n");
@@ -53,11 +53,11 @@ public class ConsoleReader {
         return this;
     }
 
-    public void findFails() {
+    public void printFailedResults() {
         checkResults(true);
     }
 
-    public void printResults() {
+    public void printAllResults() {
         checkResults(false);
     }
 
@@ -77,12 +77,13 @@ public class ConsoleReader {
             while ((line = reader.readLine()) != null) {
                 counter++;
                 String expectedLine = expectedReader.readLine();
+                String input = inputHolder.getNextInput();
                 if (expectedLine == null) {
                     System.out.println("Mismatch in result count");
                     break;
                 }
                 if (!(onlyFailed && line.equals(expectedLine))) {
-                    System.out.println("input:           |" + inputHolder.getNextInput() + "|");
+                    System.out.println("input:           |" + input + "|");
                     System.out.println("expected result: |" + expectedLine + "|");
                     System.out.println("actual result:   |" + line + "|");
                     System.out.println("result:" + line.equals(expectedLine));

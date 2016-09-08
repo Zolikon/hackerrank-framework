@@ -20,7 +20,7 @@ public class ConsoleWriter {
         return new ConsoleWriter();
     }
 
-    public ConsoleWriter addInput(Object line, Object... lines) {
+    public ConsoleWriter addLine(Object line, Object... lines) {
         inputHolder.addInput(line);
         for (Object oneLine : lines) {
             inputHolder.addInput(oneLine);
@@ -36,8 +36,8 @@ public class ConsoleWriter {
     public void fromFile(String fileName) {
         URL url = ConsoleWriter.class.getClassLoader().getResource(fileName);
         try {
-            InputStream input = new BufferedInputStream(new FileInputStream(new File(url.toURI())));
-            // readSourceFile(url);
+            readSourceFile(url);
+            InputStream input = new FileInputStream(new File(url.toURI()));
             System.setIn(input);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,11 +55,9 @@ public class ConsoleWriter {
         inputHolder.finishInput();
         reader.close();
     }
-
     public void finish() {
         inputHolder.finishInput();
         String inputAsString = inputHolder.toString();
-        Log.getInstance().add(inputAsString);
         StringBufferInputStream s = new StringBufferInputStream(inputAsString);
         System.setIn(s);
     }
