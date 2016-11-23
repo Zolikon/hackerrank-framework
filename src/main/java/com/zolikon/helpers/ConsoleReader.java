@@ -1,17 +1,9 @@
 package com.zolikon.helpers;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.URL;
+
+@SuppressWarnings("unused")
 public class ConsoleReader {
 
     private ByteArrayOutputStream out;
@@ -32,9 +24,9 @@ public class ConsoleReader {
     }
 
     public ConsoleReader addLines(String line, String... lines) {
-        expected.append(line + "\n");
+        expected.append(line).append("\n");
         for (String oneLine : lines) {
-            expected.append(oneLine + "\n");
+            expected.append(oneLine).append("\n");
         }
         return this;
     }
@@ -64,7 +56,7 @@ public class ConsoleReader {
 
     private void checkResults(boolean onlyFailed) {
         try (ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));) {
+             BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             BufferedReader expectedReader;
             if (fileSource != null) {
                 expectedReader = new BufferedReader(new InputStreamReader(fileSource));
@@ -93,7 +85,7 @@ public class ConsoleReader {
                 }
 
             }
-            System.out.println(String.format("Test cases:   %s", counter));
+            System.out.println(String.format("TwoCharacters cases:   %s", counter));
             System.out.println(String.format("Failed tests: %s", failedCounter));
         } catch (Exception exc) {
             exc.printStackTrace();

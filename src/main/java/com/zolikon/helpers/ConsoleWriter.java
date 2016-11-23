@@ -1,12 +1,9 @@
 package com.zolikon.helpers;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.StringBufferInputStream;
+import java.io.*;
 import java.net.URL;
+
+@SuppressWarnings("unused")
 public class ConsoleWriter {
 
     private StringBuilder builder;
@@ -15,15 +12,16 @@ public class ConsoleWriter {
     private ConsoleWriter() {
         this.builder = new StringBuilder();
     }
+
     public static ConsoleWriter init() {
         return new ConsoleWriter();
     }
 
     public ConsoleWriter addLines(String line, String... lines) {
-        builder.append(line + "\n");
+        builder.append(line).append("\n");
         inputCounter++;
         for (String oneLine : lines) {
-            builder.append(oneLine + "\n");
+            builder.append(oneLine).append("\n");
             inputCounter++;
         }
         return this;
@@ -35,8 +33,8 @@ public class ConsoleWriter {
     }
 
     public ConsoleWriter addInt(int... number) {
-        for (int i = 0; i < number.length; i++) {
-            builder.append(number[i] + " ");
+        for (int item : number) {
+            builder.append(item).append(" ");
         }
         inputCounter = number.length;
         return this;
@@ -52,6 +50,7 @@ public class ConsoleWriter {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public void finish() {
         StringBufferInputStream s = new StringBufferInputStream(String.format(builder.toString(), inputCounter));
         System.setIn(s);

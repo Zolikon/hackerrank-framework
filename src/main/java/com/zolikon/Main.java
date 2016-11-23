@@ -1,23 +1,26 @@
 package com.zolikon;
 
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 
 import com.zolikon.helpers.ConsoleReader;
 import com.zolikon.helpers.ConsoleWriter;
-import com.zolikon.helpers.Timer;
-import com.zolikon.problems.BiggerIsGreater;
+import com.zolikon.problems.TwoCharacters;
+
+import static com.zolikon.helpers.Timer.printLastRun;
+import static com.zolikon.helpers.Timer.start;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
         //@formatter:off
-        ConsoleWriter.init().addInputCounter().fromFile("test");
-        ConsoleReader consoleReader = ConsoleReader.init().fromFile("results");
-        Timer.start(BiggerIsGreater.class);
+        ConsoleWriter.init().addLines("63","pvmaigytciycvjdhovwiouxxylkxjjyzrcdrbmokyqvsradegswrezhtdyrsyhg").finish();
+        ConsoleReader consoleReader = ConsoleReader.init().addLines("6");
+        start(TwoCharacters.class);
         consoleReader.finish().findFails();
-        Timer.printLastRun();
+        printLastRun();
         //@formatter:on
 
+
+
     }
+
 }
