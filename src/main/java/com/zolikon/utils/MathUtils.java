@@ -1,9 +1,9 @@
 package com.zolikon.utils;
 
 @SuppressWarnings("unused")
-public class Math {
+public class MathUtils {
 
-    private Math() {
+    private MathUtils() {
 
     }
 
@@ -17,11 +17,11 @@ public class Math {
     }
 
     public static long highestCommonDenominator(long[] array) {
-        return processArray(array, Math::highestCommonDenominator);
+        return processArray(array, MathUtils::highestCommonDenominator);
     }
 
     public static long lowestCommonMultiple(long[] array) {
-        return processArray(array, Math::lowestCommonMultiple);
+        return processArray(array, MathUtils::lowestCommonMultiple);
     }
 
     public static long lowestCommonMultiple(long a, long b) {

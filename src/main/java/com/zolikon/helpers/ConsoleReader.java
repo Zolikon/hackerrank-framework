@@ -85,7 +85,7 @@ public class ConsoleReader {
                 }
 
             }
-            System.out.println(String.format("TwoCharacters cases:   %s", counter));
+            System.out.println(String.format("Test cases:   %s", counter));
             System.out.println(String.format("Failed tests: %s", failedCounter));
         } catch (Exception exc) {
             exc.printStackTrace();
