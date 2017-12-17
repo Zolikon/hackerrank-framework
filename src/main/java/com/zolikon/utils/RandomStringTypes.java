@@ -28,7 +28,7 @@ public enum RandomStringTypes {
     MIXED{
         @Override
         public char randomChar() {
-            int type = RANDOM.nextInt(3);
+            int type = RANDOM.nextInt(102)%3;
             char value;
             switch (type){
                 case 0:

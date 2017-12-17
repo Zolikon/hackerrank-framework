@@ -12,10 +12,10 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         //@formatter:off
-        ConsoleWriter.init().fromFile("test");
-        ConsoleReader consoleReader = ConsoleReader.init().fromFile("results");
-        start(SteadyGene.class);
-        consoleReader.finish().findFails();
+        ConsoleWriter.init().addLines("3","51234564564654654132345 51234564564654654132345 51234564564654654132343").finish();
+        //ConsoleReader consoleReader = ConsoleReader.init().addLines("3");
+        start(SuperFunctionalStrings.class);
+       // consoleReader.finish().printResults();
         printLastRun();
         //@formatter:on
 
